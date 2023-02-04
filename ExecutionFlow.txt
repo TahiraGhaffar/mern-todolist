@@ -1,0 +1,27 @@
+On Terminal : npx create-react-app client
+cd api 
+inside api> type : npm init
+inside api> type : npm i express mongoose cors
+inside api> type : npm i -D nodemon   // -D means development dependencies
+
+
+Goto "api > package.json"  , remove "test" in scripts & type 
+"scripts": {
+    "start" : "nodemon server.js"
+  }
+
+
+Goto Terminal , click on Dropdown on Powershell, Select GitBash, On terminal type : mongo
+Copy generated string stating 'connecting to db"
+type : exit on terminal  
+
+
+After All REST API thing, Goto Terminal. click on dropdown and shift to "Powershell", uptil now all API work done on "node"
+On Terminal type :  cd client
+
+Goto Client Folder & delete some Files created by React Module 
+Delete > App.css, App.test.js, logo.svg, reportWebVitals.js, setupTests.js
+
+
+Make changes in App.js
+on terminal type :  npm start(this will run client file)

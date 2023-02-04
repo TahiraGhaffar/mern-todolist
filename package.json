@@ -1,0 +1,25 @@
+{
+  "name": "mern-todo-api",
+  "version": "1.0.0",
+  "description": "On Terminal : npx create-react-app client",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node server.js",
+    "server" : "nodemon server.js",
+    "client" : "npm start --prefix client",
+    "dev" : "concurrently \"npm start\" \"npm run client\" "  
+  },
+  "author": "Tahira Ghaffar",
+  "license": "ISC",
+  "engines": {
+    "node": "16.14.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
