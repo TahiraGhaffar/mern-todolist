@@ -9,6 +9,9 @@ app.use(express.json());
 app.use(cors());
 
 //"mongodb://127.0.0.1:27017/mern-todo"
+//mongodb://localhost:27017
+mongoose.set('strictQuery', false);
+
 mongoose.connect("mongodb://127.0.0.1:27017/mern-todo",{  //"mern-todo" is DB name
     useNewUrlParser : true,
     useUnifiedTopology : true
@@ -50,7 +53,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/mern-todo",{  //"mern-todo" is DB na
 });
 
 
-  app.put('/todo/complete/:id', async(req,res) => {
+  app.put('/todo/update/:id', async(req,res) => {
     const todo = await Todo.findById(req.params.id);
 
     todo.complete = !todo.complete;
@@ -72,10 +75,10 @@ if (process.env.NODE_ENV === 'production'){
    }
    
 
-
-  let port = process.env.PORT || 3000; //means let port equal to what HEROKU has setup
+  let port = 3001;
+  //let port = process.env.PORT || 3001; //means let port equal to what HEROKU has setup
   // if (port == null || port == "") { //if heroku hasn't set one, then we gonna use our local one i.e, 3000
   //   port = 3000;
   // }
 
-  app.listen(port, () => console.log("Server started on port 3000"));
+  app.listen(port, () => console.log("Server started on port "+port));

@@ -9,7 +9,8 @@ const TodoSchema = new Schema({
     complete : {
         type: Boolean,
         default: false
-    }, timestamp: {
+    }, 
+    timestamp: {
         type: String,
         default: Date.now()
     }

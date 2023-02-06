@@ -1,18 +1,26 @@
-GET http://localhost:3000/todos
+GET http://localhost:3001/todos HTTP/1.1
 
 ###
 
-POST http://localhost:3000/todo/new
+POST http://localhost:3001/todo/new
 Content-Type: application/json
 
 {
-    "text" : "Clean the room"
+    "text" : "Read book"
 }
 
 ###
 
-DELETE http://localhost:3000/todo/delete/63d688d14298d044b315e73c
+DELETE http://localhost:3001/todo/delete/63e02b8de28660e0d147f690
 
 ###
 
-PUT http://localhost:3000/todo/complete/63d688944298d044b315e73a
+GET  http://localhost:3001/todo/complete/63e0fb83494d77e8abf29409
+
+###
+PUT http://localhost:3001/todo/update/60e585d86177f95ff0574323
+Content-Type: application/json
+
+{
+	"text": "Go Shopping for Milk"
+}
