@@ -14,11 +14,24 @@ app.use(cors());
 //mongodb://localhost:27017
 mongoose.set('strictQuery', false);
 
-mongoose.connect(process.env.MONGO_URI,{  //"mern-todo" is DB name
-    useNewUrlParser : true,
-    useUnifiedTopology : true
-}).then(() => console.log("Connected to DB"))
-  .catch(console.error);
+// mongoose.connect(process.env.MONGO_URI,{  //"mern-todo" is DB name
+//     useNewUrlParser : true,
+//     useUnifiedTopology : true
+// }).then(() => console.log("Connected to DB"))
+//   .catch(console.error);
+
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser : true,
+      useUnifiedTopology : true
+    });
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+}
 
   const Todo = require('./models/Todo');
 
@@ -83,4 +96,11 @@ if (process.env.NODE_ENV === 'production'){
   //   port = 3000;
   // }
 
-  app.listen(port, () => console.log("Server started on port "+port));
+
+  connectDB().then(() => {
+    app.listen(port, () => {
+        console.log("listening for requests");
+    })
+})
+
+  //app.listen(port, () => console.log("Server started on port "+port));
