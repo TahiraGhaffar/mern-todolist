@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require('path');
+const env = require('dotenv');
+env.config();
 
 const app = express();
 
@@ -12,7 +14,7 @@ app.use(cors());
 //mongodb://localhost:27017
 mongoose.set('strictQuery', false);
 
-mongoose.connect("mongodb://127.0.0.1:27017/mern-todo",{  //"mern-todo" is DB name
+mongoose.connect(process.env.MONGO_URI,{  //"mern-todo" is DB name
     useNewUrlParser : true,
     useUnifiedTopology : true
 }).then(() => console.log("Connected to DB"))

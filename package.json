@@ -4,10 +4,10 @@
   "description": "On Terminal : npx create-react-app client",
   "main": "index.js",
   "scripts": {
-    "start" : "node server.js",
-    "server" : "nodemon server.js",
-    "client" : "npm start --prefix client",
-    "dev" : "concurrently \"npm start\" \"npm run client\" "  
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm start\" \"npm run client\" "
   },
   "author": "Tahira Ghaffar",
   "license": "ISC",
@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^6.9.0"
   },
