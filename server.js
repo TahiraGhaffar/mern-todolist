@@ -75,8 +75,8 @@ if (process.env.NODE_ENV === 'production'){
    }
    
 
-  let port = 3001;
-  //let port = process.env.PORT || 3001; //means let port equal to what HEROKU has setup
+  //let port = 3001;
+  let port = process.env.PORT || 3001; //means let port equal to what HEROKU has setup
   // if (port == null || port == "") { //if heroku hasn't set one, then we gonna use our local one i.e, 3000
   //   port = 3000;
   // }
