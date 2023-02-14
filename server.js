@@ -2,8 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require('path');
-const env = require('dotenv');
-env.config();
+// const env = require('dotenv');
+// env.config();
 
 const app = express();
 
@@ -29,7 +29,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/mern-todo",{  //"mern-todo" is DB na
 //     console.log(`MongoDB Connected: ${conn.connection.host}`);
 //   } catch (error) {
 //     console.log(error);
-//     process.exit(1);
+//     //process.exit(1);
 //   }
 // }
 
@@ -76,8 +76,24 @@ mongoose.connect("mongodb://127.0.0.1:27017/mern-todo",{  //"mern-todo" is DB na
     todo.save();
   })
 
+  //let port = 3001;
+  let port = process.env.PORT || 3000; //means let port equal to what HEROKU has setup
+  // if (port == null || port == "") { //if heroku hasn't set one, then we gonna use our local one i.e, 3000
+  //   port = 3000;
+  // }
 
-//heroku step 2
+
+//   connectDB().then(() => {
+//     app.listen(port, () => {
+//         console.log("listening for requests on port "+port);
+//     })
+// })
+
+  app.listen(port, () => console.log("Server started on port "+port));
+
+
+
+  //heroku step 2
 //Add Handler for Client Build
 //Add the following code to your index.js (server) file. This tells the server to look for a build of the react app
 __dirname = path.resolve();  
@@ -88,19 +104,3 @@ if (process.env.NODE_ENV === 'production'){
     res.sendFile(path.join(__dirname ,'./client/build/index.html'));
     });
    }
-   
-
-  //let port = 3001;
-  let port = process.env.PORT || 3001; //means let port equal to what HEROKU has setup
-  // if (port == null || port == "") { //if heroku hasn't set one, then we gonna use our local one i.e, 3000
-  //   port = 3000;
-  // }
-
-
-//   connectDB().then(() => {
-//     app.listen(port, () => {
-//         console.log("listening for requests");
-//     })
-// })
-
-  app.listen(port, () => console.log("Server started on port "+port));
